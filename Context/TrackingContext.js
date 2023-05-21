@@ -41,7 +41,7 @@ export const TrackingProvider = ({ children }) =>
                 }
             );
             await createItem.wait();
-            console.log(error);
+            console.log(createItem);
 
         }
         catch(error)
@@ -49,7 +49,7 @@ export const TrackingProvider = ({ children }) =>
             console.log("some want wrong",error);
         }
 
-    }
+    };
     const getAllShipment = async () =>
     {
         try{
@@ -89,7 +89,8 @@ export const TrackingProvider = ({ children }) =>
             const shipmentsCount = await constract.getShipmentsCount(accounts[0]);
             return shipmentsCount.toNumber();
 
-        } catch (error)
+        }
+        catch (error)
         {
             console.log("error want, getting shipment");
         }
@@ -110,7 +111,8 @@ export const TrackingProvider = ({ children }) =>
             const connection = await web3Modal.connect();
             const provider = new ethers.providers.Web3Provider(connection);
             const singer = provider.getSigner();
-            const contract = await contract.completeShipment(
+            const contract = fetchContract(singer);
+            const transaction = await contract.completeShipment(
                 accounts[0],
                 receiver,
                 index,
@@ -156,7 +158,7 @@ export const TrackingProvider = ({ children }) =>
             return SingleShiplent;
         } catch (error)
         {
-            console.log("sorry no chipment");
+            console.log("sorry no shipment");
         }
     };
 
@@ -198,7 +200,7 @@ export const TrackingProvider = ({ children }) =>
                 method: "eth_accounts",
             });
 
-            if(accounts.lenth)
+            if(accounts.length)
             {
                 setCurrentUser(accounts[0]);
             }
@@ -224,6 +226,7 @@ export const TrackingProvider = ({ children }) =>
         {
             return "something want wrong";
         }
+    };
 
 
         useEffect(() => {
@@ -246,4 +249,3 @@ export const TrackingProvider = ({ children }) =>
                 >  {children} </TrackingContext.Provider>
         );
     };
-};
