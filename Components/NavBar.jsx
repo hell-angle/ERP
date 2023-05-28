@@ -8,7 +8,7 @@ export default () => {
 
 
     const navigation = [
-        { title: "Home ", path: "#"},
+        { title: "Home", path: "#"},
         { title: "Services", path: "#"},
         { title: "Contact Us", path: "#"},
         { title: "Erc20", path: "#"},
@@ -44,7 +44,7 @@ export default () => {
                             className="menu-btn text-gray-500 hover:text-gray-800"
                             onClick={() =>setState(!state)}
                         >
-                            {state ? <Nav1 /> : <Nav2/>}
+                            {state ? <Nav1/> : <Nav2/>}
                         </button>
                     </div>
                 </div>
@@ -53,7 +53,7 @@ export default () => {
                         state ? "block" : "hidden"
                     }`}
                 >
-                    <ul className="justify-center items-center space-y-6 md:flex md:space-x-6 md: space-y-0">
+                    <ul className="justify-center items-center space-y-6 md:flex md:space-x-6 md:space-y-0">
                         {navigation.map((item,idx) => {
                             return (
                                 <li key ={ idx } className="text-gray-700 hover:text-gray-900">
@@ -69,7 +69,7 @@ export default () => {
                             <p className="flex items-center justify-center gap-x-1 py-2 px-4
                             text-white font-medium bg-gray-800 hover:bg-gray-700 active: bg-gray-900
                             rounded-full md:inline-flex">
-                                {currentUser.slice(0,25)}..
+                                {currentUser.slice(0,25)}...
                             </p>
                         ) : ( 
                             <button
